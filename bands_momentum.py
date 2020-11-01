@@ -12,18 +12,19 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
+import re
+
 
 #plt.rcParams['xtick.top'] = plt.rcParams['xtick.labeltop'] = True
 ###########################################################################
-bool zoom=True; 
 linewidth=1.2
-file='fileo21.dat'
-#ats=['Sn','Te',]
+file='snte_Zn-0.02.dat'
+ats=['Zn','Se','Te','Vac']
 ###########################################################################
-
+print ats
 
 data=np.loadtxt(file,usecols=np.arange(0,23))
-for i in [3,8,13,18]:
+for num,i in enumerate([3,8,13,18]):
 	x=data[:,0]		#3-7 1pierw(z30) 8-12 z50 13-17 z30 18-22 z0// total s p d f 
 	total=data[:,1]
 	p_tot=data[:,i]
@@ -61,7 +62,7 @@ for i in [3,8,13,18]:
 
 	plt.xlabel(r'$E-E_F$ [Ry] ',fontsize='large')
 	plt.ylabel('States/Ry',fontsize='large')
-	plt.title(u'$Sn_{0.98}Zn_{0.02}Te$ + 0.5 $\%$ $Vac_{Sn}$') # numerki z pliku i nazwa domieszki też
+	plt.title(u'$Sn_{0.98}'+ats[+r'_{0.02}Te$ + 0.5 $\%$ $Vac_{Sn}$') # numerki z pliku i nazwa domieszki też
 
 	fig.set_size_inches(12.8,7.2)
 
